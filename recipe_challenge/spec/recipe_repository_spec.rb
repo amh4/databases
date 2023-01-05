@@ -26,4 +26,21 @@ describe RecipesRepository do
     expect(recipes[1].rating).to eq "4" 
   end
   
+  it "returns a specific record from the record db" do
+    repo = RecipesRepository.new
+    recipe = repo.find('Pasta')
+
+    expect(recipe.recipe).to eq "Pasta"
+    expect(recipe.average_cooking_time).to eq "10"
+    expect(recipe.rating).to eq "7" 
+  end
+
+  it "returns a specific record from the record db" do
+    repo = RecipesRepository.new
+    recipe = repo.find('Stir Fry')
+    p recipe
+    expect(recipe.recipe).to eq "Stir Fry"
+    expect(recipe.average_cooking_time).to eq "3"
+    expect(recipe.rating).to eq "4" 
+  end
 end
