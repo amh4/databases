@@ -29,6 +29,16 @@ RSpec.describe UsersRepository do
     expect(search.user_name).to eq 'username1'
     expect(search.email_address).to eq 'email1'
   end
+
+  it 'creates a user' do
+    repo = UsersRepository.new
+    repo.add('user3', 'email3')
+    results = repo.all
+    expect(results[-1].id).to eq "3"
+    expect(results[-1].user_name).to eq "user3"
+    expect(results[-1].email_address).to eq "email3"
+  end
+
 end
 
-#  , find users, find posts, create user, find user, delete user, delete posts
+#  create user, find user, delete user, delete posts

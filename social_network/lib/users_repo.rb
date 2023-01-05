@@ -25,4 +25,11 @@ class UsersRepository
     user.email_address = results[0]['email_address']
     return user
   end
+
+  def add(user_name, email_address)
+    sql = "INSERT INTO users (user_name, email_address) VALUES ('#{user_name}', '#{email_address}');"
+    result = DatabaseConnection.exec_params(sql,[])
+    return result
+  end
+
 end

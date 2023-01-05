@@ -21,4 +21,20 @@ RSpec.describe PostsRepository do
     expect(results[1].title).to eq 'Title2'
     expect(results[1].content).to eq 'Content2'
   end
+
+  it 'finds post based on id search' do
+    repo = PostsRepository.new
+    search = repo.find(1)
+    expect(search.title).to eq 'Title1'
+    expect(search.content).to eq 'Content1'
+  end
+
+  it 'creates post based on input' do
+    repo = PostsRepository.new
+    repo.add('title3', 'content3')
+    results = repo.all
+    expect(results[-1].id).to eq "3"
+    expect(results[-1].title).to eq "title3"
+    expect(results[-1].content).to eq "content3"
+  end
 end
