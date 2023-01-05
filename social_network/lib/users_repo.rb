@@ -1,7 +1,6 @@
 require_relative 'users'
 
 class UsersRepository
-
   def all
     sql = 'SELECT * FROM users'
     results = DatabaseConnection.exec_params(sql, [])
@@ -15,5 +14,15 @@ class UsersRepository
       users << user
     end
     return users
+  end
+
+  def find(id)
+    sql = "SELECT * FROM users WHERE id = #{id}"
+    results = DatabaseConnection.exec_params(sql, [])
+    user = User.new
+    user.id = results[0]['id']
+    user.user_name = results[0]['user_name']
+    user.email_address = results[0]['email_address']
+    return user
   end
 end

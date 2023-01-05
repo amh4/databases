@@ -9,17 +9,26 @@ end
 RSpec.describe UsersRepository do
   before(:each) { reset_table }
 
-  it "returns all users from db " do
+  it 'returns all users from db ' do
     repo = UsersRepository.new
 
     results = repo.all
 
-    expect(results[0].id).to eq "1"
-    expect(results[0].user_name).to eq "username1"
-    expect(results[0].email_address).to eq "email1"
+    expect(results[0].id).to eq '1'
+    expect(results[0].user_name).to eq 'username1'
+    expect(results[0].email_address).to eq 'email1'
 
-    expect(results[1].id).to eq "2"
-    expect(results[1].user_name).to eq "username2"
-    expect(results[1].email_address).to eq "email2"
+    expect(results[1].id).to eq '2'
+    expect(results[1].user_name).to eq 'username2'
+    expect(results[1].email_address).to eq 'email2'
+  end
+
+  it 'finds a user from a given id' do
+    repo = UsersRepository.new
+    search = repo.find(1)
+    expect(search.user_name).to eq 'username1'
+    expect(search.email_address).to eq 'email1'
   end
 end
+
+#  , find users, find posts, create user, find user, delete user, delete posts
