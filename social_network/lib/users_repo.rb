@@ -27,9 +27,15 @@ class UsersRepository
   end
 
   def add(user_name, email_address)
-    sql = "INSERT INTO users (user_name, email_address) VALUES ('#{user_name}', '#{email_address}');"
-    result = DatabaseConnection.exec_params(sql,[])
+    sql =
+      "INSERT INTO users (user_name, email_address) VALUES ('#{user_name}', '#{email_address}');"
+    result = DatabaseConnection.exec_params(sql, [])
     return result
   end
 
+  def delete(id)
+    sql = "DELETE FROM users WHERE id = #{id};"
+    # DELETE FROM students WHERE id = $1;
+    result = DatabaseConnection.exec_params(sql, [])
+  end
 end

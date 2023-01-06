@@ -27,8 +27,15 @@ class PostsRepository
   end
 
   def add(title, content)
-    sql = "INSERT INTO posts (title, content) VALUES ('#{title}', '#{content}');"
-    result = DatabaseConnection.exec_params(sql,[])
+    sql =
+      "INSERT INTO posts (title, content) VALUES ('#{title}', '#{content}');"
+    result = DatabaseConnection.exec_params(sql, [])
     return result
+  end
+
+  def delete(id)
+    sql = "DELETE FROM posts WHERE id = #{id};"
+    # DELETE FROM students WHERE id = $1;
+    result = DatabaseConnection.exec_params(sql, [])
   end
 end

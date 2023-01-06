@@ -34,11 +34,18 @@ RSpec.describe UsersRepository do
     repo = UsersRepository.new
     repo.add('user3', 'email3')
     results = repo.all
-    expect(results[-1].id).to eq "3"
-    expect(results[-1].user_name).to eq "user3"
-    expect(results[-1].email_address).to eq "email3"
+    expect(results[-1].id).to eq '3'
+    expect(results[-1].user_name).to eq 'user3'
+    expect(results[-1].email_address).to eq 'email3'
   end
 
+  it 'deletes based on given id' do
+    repo = UsersRepository.new
+    before = repo.all.length
+    repo.delete(1)
+    after = repo.all.length
+    expect(after).to eq (before - 1)
+  end
 end
 
 #  create user, find user, delete user, delete posts

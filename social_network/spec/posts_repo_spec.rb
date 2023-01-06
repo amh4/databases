@@ -33,8 +33,16 @@ RSpec.describe PostsRepository do
     repo = PostsRepository.new
     repo.add('title3', 'content3')
     results = repo.all
-    expect(results[-1].id).to eq "3"
-    expect(results[-1].title).to eq "title3"
-    expect(results[-1].content).to eq "content3"
+    expect(results[-1].id).to eq '3'
+    expect(results[-1].title).to eq 'title3'
+    expect(results[-1].content).to eq 'content3'
+  end
+
+  it 'deletes based on given id' do
+    repo = PostsRepository.new
+    before = repo.all.length
+    repo.delete(1)
+    after = repo.all.length
+    expect(after).to eq (before - 1)
   end
 end
