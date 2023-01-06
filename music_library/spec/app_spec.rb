@@ -17,7 +17,8 @@ describe Application do
     db_name = 'music_library_test'
     new_app = Application.new(db_name, io, album_repo )
   
-
+    
+    allow(io).to receive(:puts).with("Welcome to the music library manager!")
     allow(io).to receive(:puts).with("What would you like to do?")
     allow(io).to receive(:puts).with ("1 - Show me all albums")
     allow(io).to receive(:puts).with ("2 - Find a specific album")
@@ -44,7 +45,7 @@ describe Application do
     db_name = 'music_library_test'
     new_app = Application.new(db_name, io, album_repo )
   
-
+    allow(io).to receive(:puts).with("Welcome to the music library manager!")
     allow(io).to receive(:puts).with("What would you like to do?")
     allow(io).to receive(:puts).with ("1 - Show me all albums")
     allow(io).to receive(:puts).with ("2 - Find a specific album")
