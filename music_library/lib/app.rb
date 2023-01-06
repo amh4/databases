@@ -39,11 +39,18 @@ class Application
       new_repo.all
 
     elsif  main_menu_choice == "2"
-      all_repo = AlbumRepository.new
+      new_repo = AlbumRepository.new
       @io.puts "What title do you want to look for?"
       find_choice = @io.gets
-      return all_repo.find(find_choice)
+      return new_repo.find(find_choice)
 
+    elsif main_menu_choice == "3"
+      new_repo = AlbumRepository.new
+      @io.puts "Enter a title"
+      add_title = @io.gets
+      @io.puts "Enter a release year"
+      add_year = @io.gets
+      new_repo.add(add_title, add_year)
     end
   end
 end
