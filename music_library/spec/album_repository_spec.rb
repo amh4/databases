@@ -23,7 +23,7 @@ describe AlbumRepository do
 
   it 'find entry based on title' do
     repo = AlbumRepository.new
-    expect(repo.find("Doolittle")).to eq "The title is Doolittle and the year is 1998"
+    expect(repo.find("Doolittle")).to eq "1 - Doolittle - 1998"
   end
 
   it 'takes a title and release year and adds it to the table' do
